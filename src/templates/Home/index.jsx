@@ -3,14 +3,15 @@ import './styles.css';
 import { Posts } from '../../components/Posts';
 import { loadPosts } from '../../utils/load-posts';
 import { Button } from '../../components/Button';
-import { TextInput } from '../../components/Textinput';
+import { TextInput } from '../../components/Text-Input';
 
 export class Home extends Component {
     state = {
         posts: [],
         allPosts: [],
         page: 0,
-        postsPerPage: 3
+        postsPerPage: 3,
+        searchValue: ''
     };
 
     componentDidMount() {
@@ -33,7 +34,6 @@ export class Home extends Component {
             postsPerPage,
             allPosts,
             posts,
-            searchValue = '',
         } = this.state;
 
         const nextPage = page + postsPerPage;
@@ -47,8 +47,6 @@ export class Home extends Component {
         const { value } = e.target;
         this.setState({ searchValue: value })
     }
-
-
 
     render() {
         const { posts, page, postsPerPage, allPosts, searchValue } = this.state;
